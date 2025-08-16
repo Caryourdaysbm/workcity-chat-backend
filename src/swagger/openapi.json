@@ -1,0 +1,65 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Workcity Chat API",
+    "version": "0.3.0"
+  },
+  "paths": {
+    "/api/auth/signup": {
+      "post": {
+        "summary": "Sign up",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/auth/login": {
+      "post": {
+        "summary": "Log in",
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/threads": {
+      "get": {
+        "summary": "List threads"
+      },
+      "post": {
+        "summary": "Create thread"
+      }
+    },
+    "/api/threads/{id}": {
+      "delete": {
+        "summary": "Delete thread"
+      }
+    },
+    "/api/threads/unread-summary": {
+      "get": {
+        "summary": "Unread by conversation"
+      }
+    },
+    "/api/conversations/{conversationId}/messages": {
+      "get": {
+        "summary": "List messages"
+      },
+      "post": {
+        "summary": "Send message"
+      }
+    },
+    "/api/conversations/{conversationId}/read": {
+      "post": {
+        "summary": "Mark as read"
+      }
+    },
+    "/api/upload": {
+      "post": {
+        "summary": "Upload a file"
+      }
+    }
+  }
+}

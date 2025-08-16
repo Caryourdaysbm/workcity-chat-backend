@@ -1,0 +1,25 @@
+services:
+  mongo:
+    image: mongo:7
+    restart: unless-stopped
+    ports: ["27017:27017"]
+    volumes: [ "mongo_data:/data/db" ]
+  api:
+    build: .
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/workcity_chat
+      - JWT_SECRET=1D1d1tF0rW0rkc1ty
+      - CLIENT_ORIGIN=http://localhost:3000
+      - UPLOAD_DIR=/app/uploads
+    volumes: [ "./uploads:/app/uploads" ]
+    ports: ["4000:4000"]
+    depends_on: [mongo]
+  mongo-express:
+    image: mongo-express:1.0.2
+    restart: unless-stopped
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    ports: ["8081:8081"]
+    depends_on: [mongo]
+volumes:
+  mongo_data: {}
