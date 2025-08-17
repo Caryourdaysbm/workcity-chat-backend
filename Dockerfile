@@ -4,7 +4,7 @@ RUN apk update && apk upgrade --no-cache
 
 WORKDIR /app
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm ci 
 COPY . .
 RUN npm run build
 EXPOSE 4000
